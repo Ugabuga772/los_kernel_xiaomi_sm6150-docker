@@ -64,7 +64,6 @@ jobs:
           export CFLAGS_EXTRA="-DBUILD_DATE=$BUILD_DATE"
 
           make O=out ARCH=arm64 vendor/sweet_defconfig
-          scripts/kconfig/merge_config.sh -O out out/.config arch/arm64/configs/vendor/sweet.config
           make -j"$(nproc --all)" O=out ARCH=arm64 LLVM=1 LLVM_IAS=1 CC=clang \
             CLANG_TRIPLE="$CLANG_PATH/aarch64-linux-gnu-" \
             CROSS_COMPILE="$GCC64_PATH/bin/aarch64-elf-" \
