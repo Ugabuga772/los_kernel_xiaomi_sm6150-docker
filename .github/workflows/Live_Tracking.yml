@@ -291,6 +291,9 @@ jobs:
       - name: 🧩 Generate Defconfig
         run: make O=out ARCH=arm64 vendor/sweet_defconfig
 
+      - name: 🧩 Merge Config Fragment
+        run: scripts/kconfig/merge_config.sh -O out out/.config arch/arm64/configs/vendor/sweet.config
+
       - name: 🔨 Build Kernel
         run: |
           CLANG="$HOME/toolchains/neutron-clang"
